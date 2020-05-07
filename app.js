@@ -11,13 +11,24 @@ const mongoConfig = require('./configs/mongo-config')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+
+
 //mongodb://heroku_8bd94qrf:irstf0rv1ds970eebtislm0apf@ds029638.mlab.com:29638/heroku_8bd94qrf
 mongoose.connect(mongoConfig, { useNewUrlParser: true, useCreateIndex: true, },function(error){
   if(error) throw error
     console.log(`connect mongodb success`);
 });
 
+
 var app = express()
+app.use(bodyParser.json())
+
+if(process.env.NODE_ENV ==='production'){
+  app.use(express.static('client/build'));
+  app.get('*',(req, res)=>{
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  })
+}
 // app.use(cors())
 
 // // Express validator
