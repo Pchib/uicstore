@@ -29,33 +29,33 @@ if(process.env.NODE_ENV ==='production'){
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   })
 }
-// app.use(cors())
+app.use(cors())
 
-// // Express validator
-// app.use(expressValidator({
-//   errorFormatter: function(param, msg, value) {
-//     var namespace = param.split('.'),
-//     root          = namespace.shift(),
-//     formParam     = root;
+// Express validator
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+    var namespace = param.split('.'),
+    root          = namespace.shift(),
+    formParam     = root;
 
-//     while(namespace.lenght) {
-//       formParam += '[' + namespace.shift() + ']';
-//     }
-//     return {
-//       param : formParam,
-//       msg   : msg,
-//       value : value
-//     };
-//   }
-// }));
+    while(namespace.lenght) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
 
 // // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
-// app.use(logger('dev'));
+app.use(logger('dev'));
 // app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 // //set static dir
 

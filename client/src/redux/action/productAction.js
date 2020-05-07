@@ -6,7 +6,7 @@ export const getAllProducts=()=>dispatch=>{
   })
   return serverCall({
     method:'GET',
-    url:`https://uicstore.herokuapp.com/products`
+    url:`/products`
   })
   .then(res=>{
       // chi do temp prodct gotten from database
