@@ -10,7 +10,6 @@ var expressValidator  = require('express-validator');//req.checkbody()
 const mongoConfig = require('./configs/mongo-config')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const port = process.env.PORT||4000;
 
 //mongodb://heroku_8bd94qrf:irstf0rv1ds970eebtislm0apf@ds029638.mlab.com:29638/heroku_8bd94qrf
 mongoose.connect(mongoConfig, { useNewUrlParser: true, useCreateIndex: true, },function(error){
@@ -19,33 +18,35 @@ mongoose.connect(mongoConfig, { useNewUrlParser: true, useCreateIndex: true, },f
 });
 
 var app = express()
-app.use(cors())
+// app.use(cors())
 
-// Express validator
-app.use(expressValidator({
-  errorFormatter: function(param, msg, value) {
-    var namespace = param.split('.'),
-    root          = namespace.shift(),
-    formParam     = root;
+// // Express validator
+// app.use(expressValidator({
+//   errorFormatter: function(param, msg, value) {
+//     var namespace = param.split('.'),
+//     root          = namespace.shift(),
+//     formParam     = root;
 
-    while(namespace.lenght) {
-      formParam += '[' + namespace.shift() + ']';
-    }
-    return {
-      param : formParam,
-      msg   : msg,
-      value : value
-    };
-  }
-}));
+//     while(namespace.lenght) {
+//       formParam += '[' + namespace.shift() + ']';
+//     }
+//     return {
+//       param : formParam,
+//       msg   : msg,
+//       value : value
+//     };
+//   }
+// }));
 
-// view engine setup
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+// // view engine setup
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
+// app.use(logger('dev'));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(cookieParser());
 
-//set static dir
-app.use(express.static(path.join(__dirname, 'public')));
+// //set static dir
 
 //routers
 app.use('/', indexRouter);
@@ -61,5 +62,5 @@ app.use(function(err, req, res, next) {
   // console.log(err);
   res.status(err.status || 500).json(err);
 });
-app.listen(port, () => console.log(`Example app listening on port${port} !`))
+
 module.exports = app;
