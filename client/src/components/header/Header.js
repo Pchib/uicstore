@@ -93,7 +93,7 @@ export default class Header extends Component {
               <div className={styles.mid}>
                
               </div>{" "}
-            </div>*/}
+            </div>
           </MediaQuery>{" "}
           {/* smaller than 768px */}
           <MediaQuery query={device.max.tablet}>
