@@ -23,12 +23,6 @@ mongoose.connect(mongoConfig, { useNewUrlParser: true, useCreateIndex: true, },f
 var app = express()
 app.use(bodyParser.json())
 
-if(process.env.NODE_ENV ==='production'){
-  app.use(express.static('client/build'));
-  app.get('*',(req, res)=>{
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  })
-}
 app.use(cors())
 
 // Express validator
@@ -62,6 +56,13 @@ app.use(cookieParser());
 //routers
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+if(process.env.NODE_ENV ==='production'){
+  app.use(express.static('client/build'));
+  app.get('*',(req, res)=>{
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  })
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
