@@ -1,0 +1,65 @@
+@import '../../../modules/mediaQuery/app'
+
+  
+.outbox
+  display: flex
+  color: white 
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lato', sans-serif;
+  background: transparent;
+
+
+
+.headerTitle 
+  font-weight: lighter;
+  text-transform: uppercase;
+  color: black;
+  margin: auto
+  margin-top: 9rem
+  text-align: center
+
+
+
+.lists
+  display: flex
+  word-break: none  
+  white-space: nowrap
+
+
+.tag
+  padding: 0.8rem
+  white-space: nowrap
+  display: flex
+  align-items: center
+  text-decoration: none;
+  padding: 0 1em;
+  margin: 1em;
+  padding: 1em 2em;
+  border-radius: 5px;
+  background: rgba(125, 125, 125, 0.602)
+  transition: 0.5s;
+  height: 3em;
+  box-shadow: 7px 7px 5px 0px black;
+
+  // color: #007bff
+  &:hover
+    cursor: pointer
+    color: black
+    background: pink;
+    transition: 0.5s;
+
+
+@media screen and (max-width: $tablet)
+  .lists
+    display: flex
+    flex-direction: column
+
+  .outbox
+    display: flex
+    flex-direction: column-reverse
+    margin: 0
+    font-size: .8rem
+
+  .tag
+    border-bottom: 1px solid rgba(0,0,0,.5)
