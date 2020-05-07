@@ -10,6 +10,7 @@ var expressValidator  = require('express-validator');//req.checkbody()
 const mongoConfig = require('./configs/mongo-config')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const port = process.env.PORT||4000;
 
 //mongodb://heroku_8bd94qrf:irstf0rv1ds970eebtislm0apf@ds029638.mlab.com:29638/heroku_8bd94qrf
 mongoose.connect(mongoConfig, { useNewUrlParser: true, useCreateIndex: true, },function(error){
@@ -39,9 +40,6 @@ app.use(expressValidator({
 }));
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -63,5 +61,5 @@ app.use(function(err, req, res, next) {
   // console.log(err);
   res.status(err.status || 500).json(err);
 });
-
+app.listen(port, () => console.log(`Example app listening on port${port} !`))
 module.exports = app;
