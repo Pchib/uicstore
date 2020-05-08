@@ -8,6 +8,7 @@ import {getProductsByCategory,getAllProducts,search} from '../../redux/action/pr
 const mapStoreToProps=state=>({
   user_token:state.token.user_token,
   departments:state.department.departments,
+  cart:state.cart.cart
 })
 
 const mapDispatchToProps=dispatch=>({

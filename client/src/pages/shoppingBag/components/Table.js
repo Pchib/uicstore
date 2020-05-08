@@ -4,6 +4,8 @@ import styles from '../stylesheets/table.module.sass'
 import { Button } from 'react-bootstrap'
 
 export default function BagTable({ items, handleClick }) {
+  let itemsall = items.toString()
+    console.log(Object.values(items).length)      
   return (
     <div className={styles.outbox}>
       <Table striped bordered hover>
@@ -17,6 +19,7 @@ export default function BagTable({ items, handleClick }) {
           </tr>
         </thead>
         <tbody className={styles.table_body}>
+          
           {Object.keys(items).map(id =>
             // table row
             <tr key={id}>

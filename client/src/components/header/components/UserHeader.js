@@ -31,10 +31,13 @@ export default class UserHeader extends Component {
     const {
       user_token,
       departments,
+      items,
       search,
       getProductsByCategory,
       getAllProducts
     } = this.props;
+    console.log(Object.values(items).length)     
+    let itemall = Object.values(items).length
     return (
       <div>
       <div className={styles.outbox}>
@@ -47,7 +50,8 @@ export default class UserHeader extends Component {
         />
       </div>
       <div className={styles.tag} onClick={() => jumpTo("/bag")}>
-        CART
+      <i className="fa fa-cart-plus"><span>{"       "}{itemall}</span></i>
+      
       </div>
       {user_token && Object.keys(user_token).length > 0 ? (
         <div className={styles.loggout}>

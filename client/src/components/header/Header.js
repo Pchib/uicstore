@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "./stylesheets/header.module.sass";
 import UserHeader from "./components/UserHeader";
+import Cartlogomini from "./components/Cartlogomini";
 import Menu from "./components/Menu";
 import Search from "./components/Search";
 import jumpTo, { go } from "../../modules/Navigation";
@@ -51,6 +52,7 @@ export default class Header extends Component {
     });
   };
   render() {
+    const { items } = this.props.cart
     const index = this.state.index % classNames.length;
     const className = classNames[index];
     const {
@@ -73,7 +75,7 @@ export default class Header extends Component {
        {/*  {" "}
             {/* top user header */}{" "}
             <div>
-              <UserHeader user_token={(user_token)}  search={search} />
+              <UserHeader user_token={(user_token)}   items={items || {}}  search={search} />
             </div>{" "}
             {/* menu header */}{" "}
             <div className={styles.content}>
@@ -124,7 +126,7 @@ export default class Header extends Component {
                       className={styles.side_content}
                       onClick={() => jumpTo("/bag")}
                     >
-                      Shopping Bag{" "}
+                      My Cart{" "}
                     </div>{" "}
                     <div className={styles.side_title}>USER </div>{" "}
                     <div
@@ -154,6 +156,7 @@ export default class Header extends Component {
                   <div className={styles.bar3}></div>
                 </div>
               </div>
+              <Cartlogomini className={styles.cartlogomini} items={items || {}}/>
               {/* logo */}
               <div
                 className={styles.logo}

@@ -87,7 +87,7 @@ export default class ProductOverview extends Component {
                     />
                   </div>
                   <div className={styles.btns}>
-                    <Button className={styles.btn} onClick={this.addToBag} variant="outline-primary">Add to Bag</Button>
+                    <Button className={styles.btn} onClick={this.addToBag} variant="outline-primary">Add to Cart</Button>
                   </div>
                 </div>
               </div>

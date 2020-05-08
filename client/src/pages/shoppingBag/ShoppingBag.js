@@ -17,7 +17,7 @@ export default function ShoppingBag(props) {
       <div className={styles.box}>
         <div className={styles.content}>
           <div className={styles.title.concat(" my-2")}>
-            Shopping Bag
+            My Cart
           </div>
           <div className={styles.table}>
             <Table
